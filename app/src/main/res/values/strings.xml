@@ -1,0 +1,16 @@
+<resources>
+
+    <string name="app_name">Demo</string>
+    <string name="thread_open_futuretask">在线程中执行FutureTask</string>
+    <string name="thread_create_executor">创建线程池执行callable任务</string>
+    <string name="test_text">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</string>
+    <string name="show_view">显示view</string>
+    <string name="slide_text">这个页面是滑动删除页面</string>
+
+    <!--主页-->
+    <string name="function_thread">Thread Demo</string>
+    <string name="function_edittext">EditText Demo</string>
+    <string name="function_viewstub">ViewStub Demo</string>
+    <string name="function_slide">SlideActivity Demo</string>
+
+</resources>
