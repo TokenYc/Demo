@@ -13,9 +13,16 @@
         <item name="android:textColor">@color/colorText</item>
     </style>
 
-    <style name="transparent" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="transparent" parent="Theme.AppCompat.Light.DarkActionBar" >
         <item name="android:windowBackground">@color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@style/FeelyouWindowAnimTheme</item>
+    </style>
 
+    <style name="FeelyouWindowAnimTheme" parent="android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/activity_in_a</item>
+        <item name="android:activityOpenExitAnimation">@anim/activity_in_a</item>
+        <item name="android:activityCloseEnterAnimation">@anim/activity_out_a</item>
+        <item name="android:activityCloseExitAnimation">@anim/activity_out_a</item>
     </style>
 </resources>
