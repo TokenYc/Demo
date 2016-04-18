@@ -12,5 +12,6 @@
     <string name="function_edittext">EditText Demo</string>
     <string name="function_viewstub">ViewStub Demo</string>
     <string name="function_slide">SlideActivity Demo</string>
-
+    <string name="function_canvas">Canvas Demo</string>
+    <string name="function_glide">Glide Demo</string>
 </resources>

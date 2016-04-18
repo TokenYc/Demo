@@ -4,9 +4,11 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Scroller;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 /**
  * Created by 24706 on 2016/4/15.
@@ -17,12 +19,16 @@ public class SlideHelper {
     private static final int DEFAULT_START_X = -1000;
     private static final int MIN_REACT = 60;
 
-    private View rootView;
+    private ViewGroup rootView;
     private int startX = DEFAULT_START_X;
 
     private  Context mContext;
     private Activity mActivity;
 
+    private float mScreenWidth;
+
+    private ShadowFrameLayout slidePanel;
+    private FrameLayout dimView;
 
     public SlideHelper() {
 
@@ -32,8 +38,20 @@ public class SlideHelper {
         mContext=context;
         mActivity=(Activity)context;
 
-        rootView = ((Activity)mContext).findViewById(android.R.id.content).getRootView();
-        rootView.setOnTouchListener(new View.OnTouchListener() {
+        rootView = (ViewGroup) (mActivity).findViewById(android.R.id.content).getRootView();
+        dimView = new FrameLayout(mContext);
+//        dimView.setBackgroundColor(Color.parseColor("#000000"));
+        slidePanel = new ShadowFrameLayout(mContext);
+        for (int i=0;i<rootView.getChildCount();i++){
+            View view = rootView.getChildAt(i);
+            rootView.removeViewAt(i);
+            slidePanel.addView(view);
+        }
+        rootView.addView(dimView);
+        rootView.addView(slidePanel);
+
+        mScreenWidth =(float)screenWidth(mContext);
+        slidePanel.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
@@ -42,18 +60,21 @@ public class SlideHelper {
                             startX = (int) event.getX();
                         break;
                     case MotionEvent.ACTION_MOVE:
-                        if (startX > DEFAULT_START_X)
-                            rootView.scrollTo(-(int) event.getX(), 0);
+                        if (startX > DEFAULT_START_X) {
+                            slidePanel.scrollTo(-(int) event.getX(), 0);
+//                            changeRootViewAlpha(dimView,event.getX());
+                        }
                         break;
                     case MotionEvent.ACTION_UP:
                         if (startX > DEFAULT_START_X) {
 
                             startX = DEFAULT_START_X;
 
-                            if ((int) event.getX() < SlideHelper.screenWidth(mContext) / 2) {
-                                backToBegin(rootView, event.getX());
-                            } else {
-                                goToEnd(rootView, event.getX());
+                            if ((int) event.getX() < SlideHelper.screenWidth(mContext) / 2) {//没有退出activity
+                                backToBegin(slidePanel, event.getX());
+                                rootView.setAlpha(1f);
+                            } else {//退出activity
+                                goToEnd(slidePanel, event.getX());
                             }
                         }
                         break;
@@ -83,6 +104,7 @@ public class SlideHelper {
                 float position = (float) animation.getAnimatedValue();
                 view.scrollTo(-(int) position, 0);
                 if (position == SlideHelper.screenWidth(mContext)) {
+                    dimView.setAlpha(0);
                     mActivity.finish();
                 }
             }
@@ -107,6 +129,15 @@ public class SlideHelper {
         });
     }
 
+    private void changeRootViewAlpha( View rootView,float currentX){
+
+        float value= (float) ((1-currentX/ mScreenWidth)/1.5);
+
+
+        rootView.setAlpha(value);
+
+    }
+    
     /**
      * @param context
      * @return int
@@ -114,5 +145,14 @@ public class SlideHelper {
      */
     public static int screenWidth(Context context) {
         return context.getResources().getDisplayMetrics().widthPixels;
+    }
+
+    /**
+     * 获取屏幕高度
+     * @param context
+     * @return
+     */
+    public static int screenHeight(Context context) {
+        return context.getResources().getDisplayMetrics().heightPixels;
     }
 }

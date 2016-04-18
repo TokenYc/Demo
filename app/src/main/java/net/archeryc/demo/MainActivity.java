@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.bumptech.glide.Glide;
+
 import net.archeryc.demo.Slide.SlideActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,6 +35,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this,SlideActivity.class));
     }
 
+    public void go2CanvasActivity(View view) {
+        startActivity(new Intent(this,CanvasActivity.class));
+    }
+
+    public void go2GlideActivity(View view) {
+        startActivity(new Intent(this, GlideActivity.class));
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();

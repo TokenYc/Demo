@@ -38,4 +38,18 @@
         android:text="@string/function_slide"
         android:onClick="go2SlideActivity"
         />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/function_canvas"
+        android:onClick="go2CanvasActivity"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/function_glide"
+        android:onClick="go2GlideActivity"
+        />
 </LinearLayout>
