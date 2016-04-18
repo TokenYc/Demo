@@ -29,6 +29,7 @@ public class SlideHelper {
 
     private ShadowFrameLayout slidePanel;
     private FrameLayout dimView;
+    private OnPositionChangeListener onPositionChangeListener;
 
     public SlideHelper() {
 
@@ -41,7 +42,7 @@ public class SlideHelper {
         rootView = (ViewGroup) (mActivity).findViewById(android.R.id.content).getRootView();
         dimView = new FrameLayout(mContext);
 //        dimView.setBackgroundColor(Color.parseColor("#000000"));
-        slidePanel = new ShadowFrameLayout(mContext);
+        slidePanel = new ShadowFrameLayout(mContext,this);
         for (int i=0;i<rootView.getChildCount();i++){
             View view = rootView.getChildAt(i);
             rootView.removeViewAt(i);
@@ -63,6 +64,8 @@ public class SlideHelper {
                         if (startX > DEFAULT_START_X) {
                             slidePanel.scrollTo(-(int) event.getX(), 0);
 //                            changeRootViewAlpha(dimView,event.getX());
+                            if (onPositionChangeListener!=null)
+                            onPositionChangeListener.onPositionChanged(event.getX());
                         }
                         break;
                     case MotionEvent.ACTION_UP:
@@ -154,5 +157,14 @@ public class SlideHelper {
      */
     public static int screenHeight(Context context) {
         return context.getResources().getDisplayMetrics().heightPixels;
+    }
+
+
+    public void setOnPositionChangeListener(OnPositionChangeListener listener) {
+        this.onPositionChangeListener=listener;
+    }
+
+    public interface OnPositionChangeListener{
+        public void onPositionChanged(float x);
     }
 }

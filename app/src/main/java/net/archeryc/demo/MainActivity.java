@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.bumptech.glide.Glide;
 
 import net.archeryc.demo.Slide.SlideActivity;
 
