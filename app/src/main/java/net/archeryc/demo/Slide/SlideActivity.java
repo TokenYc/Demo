@@ -1,15 +1,7 @@
-package net.archeryc.demo.Slide;
+package net.archeryc.demo.slide;
 
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.Toast;
 
-import net.archeryc.demo.MainActivity;
 import net.archeryc.demo.R;
 import net.archeryc.demo.base.BaseActivity;
 

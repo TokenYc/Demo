@@ -1,10 +1,9 @@
-package net.archeryc.demo.Slide;
+package net.archeryc.demo.slide;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;

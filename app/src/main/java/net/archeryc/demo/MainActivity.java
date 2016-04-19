@@ -1,13 +1,12 @@
 package net.archeryc.demo;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 
-import net.archeryc.demo.Slide.SlideActivity;
+import net.archeryc.demo.imageLoader.GlideActivity;
+import net.archeryc.demo.slide.SlideActivity;
 import net.archeryc.demo.base.BaseActivity;
 
 public class MainActivity extends BaseActivity {

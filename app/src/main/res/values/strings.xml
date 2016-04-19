@@ -14,4 +14,8 @@
     <string name="function_slide">SlideActivity Demo</string>
     <string name="function_canvas">Canvas Demo</string>
     <string name="function_glide">Glide Demo</string>
+    <string name="load_normal_image">加载普通图片</string>
+    <string name="load_resource_image">加载资源图片</string>
+    <string name="showGif">显示Gif</string>
+    <string name="load_long_image">加载大图</string>
 </resources>

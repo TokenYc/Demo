@@ -10,9 +10,5 @@
     tools:context="net.archeryc.demo.CanvasActivity">
 
 
-    <net.archeryc.demo.Slide.ShadowFrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-    </net.archeryc.demo.Slide.ShadowFrameLayout>
 </RelativeLayout>

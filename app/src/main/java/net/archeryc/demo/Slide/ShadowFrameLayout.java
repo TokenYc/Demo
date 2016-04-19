@@ -1,12 +1,10 @@
-package net.archeryc.demo.Slide;
+package net.archeryc.demo.slide;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.transition.Slide;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.FrameLayout;
 
 /**
