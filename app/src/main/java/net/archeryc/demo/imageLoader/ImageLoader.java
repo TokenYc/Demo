@@ -32,10 +32,10 @@ public class ImageLoader {
     public static void loadImage(Context context, String url, ImageView imageView) {
         Glide.with(context)
                 .load(url)
-                .override(440,3970)
                 .placeholder(new ColorfulDrawable())
                 .error(ERROR_IMAGE)
-                .centerCrop()//设置填充满imageview，可能有部分被裁剪掉，还有一种方式是fitCenter，将图片完整显示
+                .centerCrop()
+                //设置填充满imageview，可能有部分被裁剪掉，还有一种方式是fitCenter，将图片完整显示
                 .into(imageView);
     }
 
@@ -43,7 +43,7 @@ public class ImageLoader {
     public static void loadImage(Context context, String url, SimpleTarget target) {
         Glide.with(context)
                 .load(url)
-                .override(440,3970)
+                .asBitmap()
                 .placeholder(new ColorfulDrawable())
                 .error(ERROR_IMAGE)
                 .centerCrop()//设置填充满imageview，可能有部分被裁剪掉，还有一种方式是fitCenter，将图片完整显示
