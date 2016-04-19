@@ -10,6 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import net.archeryc.demo.MyApplication;
+
+import java.util.List;
+
 /**
  * Created by 24706 on 2016/4/15.
  */
@@ -20,10 +24,12 @@ public class SlideHelper {
     private static final int MIN_REACT = 60;
 
     private ViewGroup rootView;
+    private ViewGroup secondRootView;
     private int startX = DEFAULT_START_X;
 
     private  Context mContext;
     private Activity mActivity;
+    private Activity mSecondActivity;
 
     private float mScreenWidth;
 
@@ -38,8 +44,12 @@ public class SlideHelper {
     public  void  init(Context context){
         mContext=context;
         mActivity=(Activity)context;
+        mSecondActivity=getSecondActivity(mActivity);
+
 
         rootView = (ViewGroup) (mActivity).findViewById(android.R.id.content).getRootView();
+        secondRootView=(ViewGroup) (mSecondActivity).findViewById(android.R.id.content).getRootView();
+
         dimView = new FrameLayout(mContext);
 //        dimView.setBackgroundColor(Color.parseColor("#000000"));
         slidePanel = new ShadowFrameLayout(mContext,this);
@@ -63,6 +73,7 @@ public class SlideHelper {
                     case MotionEvent.ACTION_MOVE:
                         if (startX > DEFAULT_START_X) {
                             slidePanel.scrollTo(-(int) event.getX(), 0);
+                            secondRootView.scrollTo(200-(int) (event.getX()/(float)(screenWidth(mSecondActivity))*200),0);
 //                            changeRootViewAlpha(dimView,event.getX());
                             if (onPositionChangeListener!=null)
                             onPositionChangeListener.onPositionChanged(event.getX());
@@ -87,9 +98,11 @@ public class SlideHelper {
         });
     }
 
+    private Activity getSecondActivity(Activity mActivity) {
+        List<Activity> activities= MyApplication.getInstance().getActivities();
 
-
-
+        return activities.get(activities.indexOf(mActivity)-1);
+    }
 
 
     /**
@@ -106,12 +119,16 @@ public class SlideHelper {
             public void onAnimationUpdate(ValueAnimator animation) {
                 float position = (float) animation.getAnimatedValue();
                 view.scrollTo(-(int) position, 0);
+                secondRootView.scrollTo(200-(int) (position/(float)(screenWidth(mSecondActivity))*200),0);
+
                 if (position == SlideHelper.screenWidth(mContext)) {
                     dimView.setAlpha(0);
+                    secondRootView.scrollTo(0,0);
                     mActivity.finish();
                 }
             }
         });
+
     }
 
     /**
@@ -128,6 +145,8 @@ public class SlideHelper {
             public void onAnimationUpdate(ValueAnimator animation) {
                 float position = (float) animation.getAnimatedValue();
                 view.scrollTo(-(int) position, 0);
+                secondRootView.scrollTo(200-(int) (position/(float)(screenWidth(mSecondActivity))*200),0);
+
             }
         });
     }
@@ -167,4 +186,6 @@ public class SlideHelper {
     public interface OnPositionChangeListener{
         public void onPositionChanged(float x);
     }
+
+
 }

@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewStub;
 
-public class ViewStubActivity extends AppCompatActivity {
+import net.archeryc.demo.base.BaseActivity;
+
+public class ViewStubActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

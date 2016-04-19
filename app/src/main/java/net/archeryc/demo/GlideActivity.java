@@ -7,7 +7,9 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
-public class GlideActivity extends AppCompatActivity {
+import net.archeryc.demo.base.BaseActivity;
+
+public class GlideActivity extends BaseActivity {
 
     ImageView imageView;
 

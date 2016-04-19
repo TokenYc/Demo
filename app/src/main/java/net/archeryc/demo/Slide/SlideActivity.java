@@ -11,8 +11,9 @@ import android.widget.Toast;
 
 import net.archeryc.demo.MainActivity;
 import net.archeryc.demo.R;
+import net.archeryc.demo.base.BaseActivity;
 
-public class SlideActivity extends AppCompatActivity {
+public class SlideActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

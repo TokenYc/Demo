@@ -4,7 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-public class EditTextActivity extends AppCompatActivity {
+import net.archeryc.demo.base.BaseActivity;
+
+public class EditTextActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

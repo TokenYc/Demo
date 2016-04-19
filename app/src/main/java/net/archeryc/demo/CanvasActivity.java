@@ -3,7 +3,9 @@ package net.archeryc.demo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class CanvasActivity extends AppCompatActivity {
+import net.archeryc.demo.base.BaseActivity;
+
+public class CanvasActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
