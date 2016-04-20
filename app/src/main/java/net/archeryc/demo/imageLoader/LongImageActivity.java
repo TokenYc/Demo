@@ -55,6 +55,7 @@ public class LongImageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_long_image);
         imageView = (ImageView) findViewById(R.id.longImage);
         ImageLoader.loadImage(this, LONG_IMAGE_URL, target);
+
         longClickDialog = new LongClickDialog(this);
 
     }

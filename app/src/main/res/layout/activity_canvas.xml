@@ -9,6 +9,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="net.archeryc.demo.CanvasActivity">
 
+    <net.archeryc.demo.imageLoader.LoadingImageLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        ></net.archeryc.demo.imageLoader.LoadingImageLayout>
 
 
 </RelativeLayout>
