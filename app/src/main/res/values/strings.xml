@@ -18,4 +18,5 @@
     <string name="load_resource_image">加载资源图片</string>
     <string name="showGif">显示Gif</string>
     <string name="load_long_image">加载大图</string>
+    <string name="save_to_local">保存到手机</string>
 </resources>

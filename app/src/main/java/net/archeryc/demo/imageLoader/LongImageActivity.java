@@ -5,6 +5,7 @@ import android.graphics.Matrix;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.request.animation.GlideAnimation;
@@ -20,10 +21,11 @@ public class LongImageActivity extends AppCompatActivity {
     private static final String LONG_IMAGE_URL = "http://ww3.sinaimg.cn/mw690/7279d218jw1f2xfvdzrm3j20c83rj4h0.jpg";
 
     private ImageView imageView;
+    LongClickDialog longClickDialog;
 
     private SimpleTarget target = new SimpleTarget<Bitmap>() {
         @Override
-        public void onResourceReady(Bitmap bitmap, GlideAnimation glideAnimation) {
+        public void onResourceReady(final Bitmap bitmap, GlideAnimation glideAnimation) {
             // do something with the bitmap
             // for demonstration purposes, let's just set it to an ImageView
 //            Matrix matrix = new Matrix();
@@ -36,6 +38,14 @@ public class LongImageActivity extends AppCompatActivity {
             matrix.setScale(multiple,multiple);
             Bitmap result = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(),matrix,true);
             imageView.setImageBitmap(result);
+            imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    longClickDialog.setBitmap(bitmap);
+                    longClickDialog.show();
+                    return false;
+                }
+            });
         }
     };
 
@@ -45,6 +55,7 @@ public class LongImageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_long_image);
         imageView = (ImageView) findViewById(R.id.longImage);
         ImageLoader.loadImage(this, LONG_IMAGE_URL, target);
+        longClickDialog = new LongClickDialog(this);
 
     }
 }
