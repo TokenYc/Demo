@@ -46,7 +46,7 @@ public class ImageLoader {
                 .asBitmap()
                 .placeholder(new ColorfulDrawable())
                 .error(ERROR_IMAGE)
-                .centerCrop()//设置填充满imageview，可能有部分被裁剪掉，还有一种方式是fitCenter，将图片完整显示
+                .centerCrop()//centerCrop设置填充满imageview，可能有部分被裁剪掉，还有一种方式是fitCenter，将图片完整显示
                 .into(target);
     }
 

@@ -183,7 +183,7 @@ public class SlideHelper {
     }
 
     public interface OnPositionChangeListener{
-        public void onPositionChanged(float x);
+         void onPositionChanged(float x);
     }
 
 
