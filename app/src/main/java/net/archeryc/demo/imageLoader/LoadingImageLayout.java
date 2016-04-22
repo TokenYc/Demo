@@ -34,6 +34,7 @@ public class LoadingImageLayout extends RelativeLayout {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        // C4C4C4
         paint.setColor(Color.parseColor("#7A7A7A"));
         canvas.drawCircle(getWidth()/2-80,getHeight()/2,30,paint);
         paint.setColor(Color.parseColor("#7A7A7A"));

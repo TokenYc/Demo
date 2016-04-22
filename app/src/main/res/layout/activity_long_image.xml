@@ -13,7 +13,15 @@
             android:id="@+id/longImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone" />
+        />
+
     </ScrollView>
 
+    <ImageView
+        android:id="@+id/imv_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/frame_loading"
+        android:layout_centerInParent="true"
+        />
 </RelativeLayout>

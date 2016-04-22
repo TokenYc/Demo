@@ -33,6 +33,10 @@
         <activity android:name=".imageLoader.LongImageActivity"
             android:hardwareAccelerated="false"
             ></activity>
+        <meta-data
+            android:name="net.archeryc.demo.imageLoader.MyGlideModule"
+            android:value="GlideModule" />
+
     </application>
 
 </manifest>

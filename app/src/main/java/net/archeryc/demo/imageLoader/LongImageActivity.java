@@ -2,6 +2,7 @@ package net.archeryc.demo.imageLoader;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
+import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,7 +22,9 @@ public class LongImageActivity extends AppCompatActivity {
     private static final String LONG_IMAGE_URL = "http://ww3.sinaimg.cn/mw690/7279d218jw1f2xfvdzrm3j20c83rj4h0.jpg";
 
     private ImageView imageView;
-    LongClickDialog longClickDialog;
+    private ImageView imv_progress;
+    private LongClickDialog longClickDialog;
+    private AnimationDrawable animationDrawable;
 
     private SimpleTarget target = new SimpleTarget<Bitmap>() {
         @Override
@@ -38,6 +41,8 @@ public class LongImageActivity extends AppCompatActivity {
             matrix.setScale(multiple,multiple);
             Bitmap result = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(),matrix,true);
             imageView.setImageBitmap(result);
+            animationDrawable.stop();
+            imv_progress.setVisibility(View.GONE);
             imageView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
@@ -53,8 +58,11 @@ public class LongImageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_long_image);
+        imv_progress = (ImageView) findViewById(R.id.imv_progress);
+        animationDrawable= (AnimationDrawable) imv_progress.getBackground();
         imageView = (ImageView) findViewById(R.id.longImage);
         ImageLoader.loadImage(this, LONG_IMAGE_URL, target);
+        animationDrawable.start();
 
         longClickDialog = new LongClickDialog(this);
 

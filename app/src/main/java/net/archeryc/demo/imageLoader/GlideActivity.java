@@ -34,7 +34,7 @@ public class GlideActivity extends BaseActivity {
 
 
     public void showNormalImage(View view) {
-        ImageLoader.loadImage(this,normalUrl,imageView);
+        ImageLoader.loadCircleImage(this,normalUrl,imageView);
     }
 
     public void showResourceImage(View view) {
