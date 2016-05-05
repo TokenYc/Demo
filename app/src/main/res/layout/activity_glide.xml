@@ -46,6 +46,12 @@
                 android:text="@string/load_long_image"
                 android:onClick="showLongImage"
                 />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/see_big_image"
+                android:onClick="showBigImage"
+                />
         </LinearLayout>
 
         <ImageView

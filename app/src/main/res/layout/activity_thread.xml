@@ -33,4 +33,18 @@
         android:onClick="openExcutor"
         />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/unsynchronized_method"
+        android:onClick="unSynchronizedMethod"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/synchronized_method"
+        android:onClick="synchronizedMethod"
+        />
+
 </LinearLayout>

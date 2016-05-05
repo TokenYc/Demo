@@ -48,4 +48,8 @@ public class GlideActivity extends BaseActivity {
     public void showLongImage(View view) {
         startActivity(new Intent(this,LongImageActivity.class));
     }
+
+    public void showBigImage(View view){
+        startActivity(new Intent(this,BigPhotoActivity.class));
+    }
 }

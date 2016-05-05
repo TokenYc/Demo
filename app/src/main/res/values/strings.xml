@@ -19,4 +19,7 @@
     <string name="showGif">显示Gif</string>
     <string name="load_long_image">加载大图</string>
     <string name="save_to_local">保存到手机</string>
+    <string name="synchronized_method">线程同步</string>
+    <string name="unsynchronized_method">线程不同步</string>
+    <string name="see_big_image">查看大图</string>
 </resources>
