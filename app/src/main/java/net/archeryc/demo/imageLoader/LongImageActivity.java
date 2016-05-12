@@ -10,7 +10,6 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
@@ -32,14 +31,19 @@ public class LongImageActivity extends AppCompatActivity {
     private float multiple;
     private Bitmap mBitmap;
 
-    private SimpleTarget target = new SimpleTarget<Bitmap>() {
+    private LoadingImageListener imageListener=new LoadingImageListener() {
         @Override
-        public void onResourceReady(final Bitmap bitmap, GlideAnimation glideAnimation) {
-            // do something with the bitmap
-            // for demonstration purposes, let's just set it to an ImageView
-//            Matrix matrix = new Matrix();
-//            matrix.setScale(2.0f, 2.0f);
-//            Bitmap result = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+        public void onLoadStart() {
+
+        }
+
+        @Override
+        public void onLoadFailure() {
+
+        }
+
+        @Override
+        public void onLoadSuccess(Bitmap bitmap) {
             mBitmap=bitmap;
             int width=mBitmap.getWidth();
             multiple=(float)(SlideHelper.screenWidth(LongImageActivity.this))/(width);
@@ -68,6 +72,7 @@ public class LongImageActivity extends AppCompatActivity {
         }
     };
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +80,7 @@ public class LongImageActivity extends AppCompatActivity {
         imv_progress = (ImageView) findViewById(R.id.imv_progress);
         animationDrawable= (AnimationDrawable) imv_progress.getBackground();
         imageView = (ImageView) findViewById(R.id.longImage);
-        ImageLoader.loadImage(this, LONG_IMAGE_URL, target);
+        GlideImageLoader.getInstance().loadImage(this, LONG_IMAGE_URL, imageListener);
         animationDrawable.start();
 
         longClickDialog = new LongClickDialog(this);

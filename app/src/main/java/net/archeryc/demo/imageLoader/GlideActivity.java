@@ -1,17 +1,9 @@
 package net.archeryc.demo.imageLoader;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import net.archeryc.demo.R;
 import net.archeryc.demo.base.BaseActivity;
@@ -34,15 +26,15 @@ public class GlideActivity extends BaseActivity {
 
 
     public void showNormalImage(View view) {
-        ImageLoader.loadCircleImage(this,normalUrl,imageView);
+        GlideImageLoader.getInstance().loadCircleImage(this,normalUrl,imageView);
     }
 
     public void showResourceImage(View view) {
-        ImageLoader.loadImage(this,R.mipmap.ic_launcher,imageView);
+        GlideImageLoader.getInstance().loadImage(this,R.mipmap.ic_launcher,imageView);
     }
 
     public void showGif(View view) {
-        ImageLoader.loadGif(this,gifUrl,imageView);
+        GlideImageLoader.getInstance().loadGif(this,gifUrl,imageView);
     }
 
     public void showLongImage(View view) {
