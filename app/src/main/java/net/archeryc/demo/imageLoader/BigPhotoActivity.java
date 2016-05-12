@@ -4,9 +4,13 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 
+import net.archeryc.demo.MainActivity;
 import net.archeryc.demo.R;
 
 import java.util.ArrayList;
@@ -30,6 +34,11 @@ public class BigPhotoActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         adapter = new MyViewPagerAdapter(urls);
         viewPager.setAdapter(adapter);
+        int flag= WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        //获得当前窗体对象
+        Window window=getWindow();
+        //设置当前窗体为全屏显示
+        window.setFlags(flag, flag);
     }
 
 
@@ -62,8 +71,7 @@ public class BigPhotoActivity extends AppCompatActivity {
         public Object instantiateItem(ViewGroup container, int position) {
             PhotoView photoView = new PhotoView(BigPhotoActivity.this,urls[position]);
             photoViews.add(photoView);
-//            photoView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-            container.addView(photoView, 0);
+            container.addView(photoView, ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
             return photoView;
         }
 

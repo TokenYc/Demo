@@ -38,7 +38,8 @@
             android:name="net.archeryc.demo.imageLoader.MyGlideModule"
             android:value="GlideModule" />
 
-        <activity android:name=".imageLoader.BigPhotoActivity"></activity>
+        <activity android:name=".imageLoader.BigPhotoActivity"
+            ></activity>
     </application>
 
 </manifest>
